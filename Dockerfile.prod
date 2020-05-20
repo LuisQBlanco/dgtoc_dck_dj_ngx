@@ -10,6 +10,7 @@ FROM python:3.8-alpine
 ENV APP_HOME=/djangonginx
 RUN mkdir ${APP_HOME}
 RUN mkdir ${APP_HOME}/staticfiles
+RUN mkdir ${APP_HOME}/mediafiles
 
 # Set work directory
 # WORKDIR /djangonginx
@@ -57,6 +58,8 @@ RUN adduser -D userlq
 # Chown all the files to the app user
 RUN chown -R userlq:userlq $APP_HOME/
 RUN chmod -R 755 ${APP_HOME}/web
+RUN chmod -R 755 ${APP_HOME}/staticfiles
+RUN chmod -R 755 ${APP_HOME}/mediafiles
 
 # Change to the app user
 USER userlq
