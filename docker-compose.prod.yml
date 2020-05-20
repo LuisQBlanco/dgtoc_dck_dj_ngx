@@ -23,7 +23,7 @@ services:
     volumes:
       - ./app:/djangonginx
       - static_volume:/djangonginx/web/staticfiles
-
+      - media_volume:/djangonginx/web/mediafiles
     # ports:
       # - 8000:8000
     expose:
@@ -68,6 +68,7 @@ services:
       - 1337:80
     volumes:
         - static_volume:/djangonginx/web/staticfiles
+        - media_volume:/djangonginx/web/mediafiles
     networks: 
       test_net:
         ipv4_address: 172.29.1.3
@@ -77,6 +78,7 @@ services:
 volumes:
     postgres-data:
     static_volume:
+    media_volume:
 
 networks: 
   test_net:
