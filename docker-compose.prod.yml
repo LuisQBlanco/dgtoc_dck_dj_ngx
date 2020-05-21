@@ -5,6 +5,7 @@ version: "3.7"
 
 services:
   web:
+    restart: unless-stopped
     container_name: django_nginx
     build: 
       context: .
@@ -37,6 +38,7 @@ services:
       - db
 
   db:
+    restart: unless-stopped
     container_name: postgres_db
     image: postgres:12-alpine
     
@@ -63,9 +65,10 @@ services:
 
     
   nginx:
+    restart: unless-stopped
     build: ./nginx
     ports: 
-      - 1337:80
+      - 80:80
     volumes:
         - static_volume:/djangonginx/web/staticfiles
         - media_volume:/djangonginx/web/mediafiles
